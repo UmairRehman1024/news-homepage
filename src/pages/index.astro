@@ -5,48 +5,79 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Welcome to Astro." >
 	<header class="flex justify-between  py-8 h-20px">
 		<img src="images/logo.svg" alt="logo">
-		<img src="images/icon-menu.svg" alt="menu">
-		<!--
-		  Home
-		  New
-		  Popular
-		  Trending
-		  Categories
-		-->
+		<img src="images/icon-menu.svg" alt="menu" onclick="openSidebar()" class="md:hidden">
+
+		<div class="sidebar hidden fixed top-0 bottom-0 right-0 p-2 w-[300px] overflow-y-auto text-center bg-off-white">
+			<img src="images/icon-menu-close.svg" alt="icon-menu-close" onclick="openSidebar()" class="flex self-end ">
+			<!--TODO put icon to the end -->
+			<nav class="flex flex-col mt-28 md:flex-row md:mt-0 md:space-x-6">
+				<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">Home</a>
+				<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">New</a>
+				<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">Popular</a>
+				<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">Trending</a>
+				<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">Categories</a>
+			</nav>
+    	</div>
+
+		<!--TODO put items to left -->
+		<nav class="hidden mt-0 space-x-6 md:block">
+			<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">Home</a>
+			<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">New</a>
+			<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">Popular</a>
+			<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">Trending</a>
+			<a href="#" class="py-2 text-dark-grayish-blue hover:text-primary-soft-orange">Categories</a>
+		</nav>
+
 	</header>
-	<main class="pb-8">
-		<div class=" grid gap-3 pb-10">
-		  <img class="main-img" src="images/image-web-3-mobile.jpg" alt="image-web-3">
-		  <h1 class="text-5xl font-bold">The Bright Future of Web 3.0?</h1>
-		  <div>
-			<p style="color: hsl(236, 13%, 42%);" class="pb-5">We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
-			But is it really fulfilling its promise?</p>
-			<button style="background-color: hsl(5, 85%, 63%); font-stretch: ultra-expanded;" class="w-48 h-12 text-white text-md">READ MORE</button>
-		  </div>
+	<main class="pb-8 grid gap-8 main md:grid-cols-3 ">
+		<!--main article -->
+		<div class="grid gap-3 main-article md:col-span-2 md:row-span-2 pb-2">
+			<picture>
+				<source media="(min-width: 800px)" srcset="images/image-web-3-desktop.jpg">
+				<img src="images/image-web-3-mobile.jpg" alt="image-web-3">
+			</picture>
+		  	<h1 class="text-5xl font-bold">The Bright Future of Web 3.0?</h1>
+			<div>
+				<p class="pb-5 text-dark-grayish-blue">We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
+				But is it really fulfilling its promise?</p>
+				<button  class="w-48 h-12 text-off-white text-md bg-primary-soft-red">READ MORE</button>
+		  	</div>
 		  
 		</div>
 		
-		<div style="background-color: hsl(240, 100%, 5%);" class="">
-			<div class="w-11/12 mx-auto">
-				<h2 style="color: hsl(35, 77%, 62%);" class="font-semibold text-2xl py-5">New</h2>
-				<h3 class="text-white font-semibold pb-2">Hydrogen VS Electric Cars</h3>
-				<p style="color: hsl(233, 8%, 79%);" class="pb-6">Will hydrogen-fueled cars ever catch up to EVs?</p>
-				<p style="border-top: 1px solid hsl(233, 8%, 79%);" class="text-white pb-6"></p>
-
-				<h3 class="text-white font-semibold pb-2">The Downsides of AI Artistry</h3>
-				<p style="color: hsl(233, 8%, 79%);" class="text-white pb-6">What are the possible adverse effects of on-demand AI image generation?</p>
-				<p style="border-top: 1px solid hsl(233, 8%, 79%);" class="text-white pb-6"></p>
-
-
-				<h3 class="text-white font-semibold pb-2">Is VC Funding Drying Up?</h3>
-				<p style="color: hsl(233, 8%, 79%);" class="text-white pb-6">Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+		<!--new articles -->
+		<div class="new-articles md:col-span-1 md:row-span-2 bg-very-dark-blue">
+			<div class="w-11/12 mx-auto h-full">
+				<h2  class="font-semibold text-2xl text-primary-soft-orange py-5">New</h2>
+				<div class="flex flex-col justify-between h-5/6 ">
+					<div>
+						<h3 class=" font-semibold pb-2 text-grayish-blue">Hydrogen VS Electric Cars</h3>
+						<p style="color: hsl(233, 8%, 79%);" class="pb-6">Will hydrogen-fueled cars ever catch up to EVs?</p>
+					</div>
+					
+					<p style="border-top: 1px solid hsl(233, 8%, 79%);" class="text-grayish-blue pb-6"></p>
+	
+					<div>
+						<h3 class="text-grayish-blue font-semibold pb-2">The Downsides of AI Artistry</h3>
+						<p style="color: hsl(233, 8%, 79%);" class="text-grayish-blue pb-6">What are the possible adverse effects of on-demand AI image generation?</p>
+					</div>
+					
+					<p style="border-top: 1px solid hsl(233, 8%, 79%);" class="text-grayish-blue pb-6"></p>
+	
+					<div>
+						<h3 class="text-grayish-blue font-semibold pb-2">Is VC Funding Drying Up?</h3>
+						<p style="color: hsl(233, 8%, 79%);" class="text-grayish-blue pb-6">Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	  
 	  
-		<div class="pt-20 flex flex-col gap-8">
+		<!--top articles -->
+		<!-- TODO fix images -->
+		<div class="grid gap-8 pt-2 md:col-span-3 md:row-span-1 md:grid-cols-3 ">
 			<div class="grid grid-cols-5 gap-6">
-				<img src="images/image-retro-pcs.jpg" alt="retro-pcs" class="col-span-2">
+				<img src="images/image-retro-pcs.jpg" alt="retro-pcs" class="col-span-2 ">
 				<div class="col-span-3 ">
 					<h3 style="color: hsl(233, 8%, 79%);" class="font-bold text-4xl pb-2">01</h3>
 		 	 		<h3 class="font-extrabold text-xl pb-2">Reviving Retro PCs</h3>
@@ -75,16 +106,54 @@ import Layout from '../layouts/Layout.astro';
 		
 	</main>
 	  
-	<div class="attribution">
+	<footer class="attribution">
 		Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
 		Coded by <a href="#">Umair Rehman</a>.
-	</div>
+	</footer>
 </Layout>
 
 <style>
-	@media (minwidth: 700px){
+	/*
+	
+	.main-article{
+		grid-area: main-article;
+	}
 
+	.new-articles{
+		grid-area: new-articles;
+	}
+
+	.top-articles{
+		grid-area: top-articles;
+	}
+
+
+
+	.main{
+		grid-template-areas: 
+			"main-article"
+			"new-articles"
+			"top-articles"
+		;
 
 	}
-	
+
+
+	@media (minwidth: 700px){
+		
+		.main{
+			grid-template-areas: 
+				"main-article main-article new-articles"
+				"main-article main-article new-articles"
+				"top-articles top-articles top-articles"
+			;
+		}
+	}
+	*/
 </style>
+
+<script type="text/javascript">
+	function openSidebar() {
+        document.querySelector(".sidebar").classList.toggle("hidden");
+      }
+</script>
